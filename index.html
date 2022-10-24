@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIG CO2 Dashboard</title>
+    <!--MATERIAL ICN-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <!--STYLESHEET-->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!--SIDEBAR CONTAINER-->
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./img/logo.png">
+                    <h2><span class="success">CO-</span>LIG</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="#" class="active">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="#" >
+                    <span class="material-icons-sharp">person</span>
+                    <h3>Users</h3>
+                    <span class="users-count">20</span>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!--END OF ASIDE-->
+        <!--MAIN SECTION-->
+        <main>
+            <h1>Dashboard</h1>
+
+            <div class="period-range">
+                <input type="number" id="period" name="period" value="4"
+                       min="1" max="12">
+                <label for="volume"> period (w)</label>
+            </div>
+
+            <div class="date-end">
+                <input type="date">
+            </div>
+
+            <!--INSIGHTS-->
+            <div class="insights">
+                <!--JOBS RUN-->
+                <div class="jobs-run">
+                    <span class="material-icons-sharp">terminal</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Jobs Run</h3>
+                            <h1>1885 </h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+                <!--END OF JOBS RUN-->
+                <!--ENERGY CONSUMED-->
+                <div class="energy-consumed">
+                    <span class="material-icons-sharp">electric_meter</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Energy Consumed</h3>
+                            <h1>2000 (kW)</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+                <!--END OF ENERGY CONSUMED-->
+                <!--CO2 EQUIVALENT-->
+                <div class="co2-eq">
+                    <span class="material-icons-sharp">co2</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total CO2 Emission</h3>
+                            <h1>200 (kg)</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+                <!--END OF CO2 EQUIVALENT-->
+                <!--EQ HECTARES TREES-->
+                <div class="eq-hect-trees">
+                    <span class="material-icons-sharp">forest</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Trees Compensation</h3>
+                            <h1>1800 (Ha)</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">For the same time period.</small>
+                </div>
+                <!--END OF HECTARES TREES-->
+                <!--EQ KM CAR-->
+                <div class="eq-km-car">
+                    <span class="material-icons-sharp">drive_eta</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>EQ Car Distance</h3>
+                            <h1>18 (km)</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">For one person</small>
+                </div>
+                <!--END OF EQ KM CAR-->
+                <!--EQ NUM OF FLIGHTS-->
+                <div class="eq-num-flights">
+                    <span class="material-icons-sharp">flight_takeoff</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>EQ N° Flights</h3>
+                            <h1>20</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">For a single passenger</small>
+                </div>
+                <!--END OF EQ NUM FLIGHTS-->
+            </div>
+            <!--END OF INSIGHTS-->
+        </main>
+        <!--END OF MAIN-->
+    </div>
+</body>
+
+</html>
