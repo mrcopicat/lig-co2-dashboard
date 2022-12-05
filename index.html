@@ -21,9 +21,6 @@
                     <img src="./img/logo.png">
                     <h2><span class="success">CO-</span>LIG</h2>
                 </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
             </div>
             <div class="sidebar">
                 <a href="#" class="active">
@@ -50,14 +47,18 @@
         <main>
             <h1>Dashboard</h1>
 
-            <div class="period-range">
-                <input type="number" id="period" name="period" value="4"
-                       min="1" max="12">
-                <label for="volume"> period (w)</label>
+            <div class="select-period">
+                <label for="cars">period: </label>
+                <select id="period" name="period">
+                    <option value="1d" selected="selected">1 day</option>
+                    <option value="1w">1 week</option>
+                    <option value="1m">1 month</option>
+                    <option value="1y">1 year</option>
+                    <option value="0">all</option>
+                </select>
             </div>
-
             <div class="date-end">
-                <input type="date">
+                <input id="date" type="date">
             </div>
 
             <!--INSIGHTS-->
@@ -184,9 +185,65 @@
                 <!--END OF EQ NUM FLIGHTS-->
             </div>
             <!--END OF INSIGHTS-->
+            <div class="top-500">
+                <h2>The top 500</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Cores</th>
+                            <th>Rmax (TFlop/s)</th>
+                            <th>Rpeak (TFlop/s)</th>
+                            <th>Power (kw)</th>
+                            <th>E-Efficiency (GFlops/Watts)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--JS FILL-->
+                    </tbody>
+                </table>
+                <a href="#show">Show more</a>
+            </div>
         </main>
         <!--END OF MAIN-->
+
+        <!--START OF RIGHT WINDOW-->
+        <div class="right">
+            <!--START OF TOP-->
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+            </div>
+            <!--END OF TOP-->
+            <!--BEGIN OF MAP-->
+            <div class="forest-map">
+                <h2>Compensation By Forest Area</h2>
+                <div class="map">
+
+                </div>
+            </div>
+            <!--END OF MAP-->
+            <!--BEGIN OF CO2-GRAPH-->
+            <div class="co2-graph">
+                <h2>CO2 Rate evolution (fr)</h2>
+                <div class="rate">
+
+                </div>
+            </div>
+            <!--END OF CO2-GRAPH-->
+
+        </div>
+        <!--END OF RIGHT WINDOW-->
     </div>
+    <script src="./data/top500.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>

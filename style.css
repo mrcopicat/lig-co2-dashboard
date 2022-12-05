@@ -29,6 +29,15 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
+.dark-theme-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -149,7 +158,7 @@ aside .logo {
 }
 
 aside .logo img {
-    width: 2rem;
+    width: 3rem;
     height: 2rem;
 }
 
@@ -233,7 +242,7 @@ main {
     margin-top: 1.4rem;
 }
 
-main .period-range {
+main .select-period {
     display: inline-block;
     background: var(--color-light);
     border-radius: var(--border-radius-1);
@@ -241,8 +250,8 @@ main .period-range {
     padding: 0.5rem 1.6rem;
 }
 
-main .period-range input[type="number"] {
-    background: whitesmoke;
+main .select-period select {
+    background: transparent;
     align-items: center;
     color: var(--color-dark);
     border-radius: var(--border-radius-1);
@@ -380,5 +389,144 @@ main .insights .progress .number {
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+/* ******************* Top 500 table ******************** */
+
+main .top-500 {
+    margin-top: 2rem;
+}
+
+main .top-500 h2 {
+    margin-bottom: 0.8rem;
+}
+
+main .top-500 table {
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main .top-500 table:hover {
+    box-shadow: none;
+}
+
+main table tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+    color: var(--color-dark-variant);
+}
+
+main table tbody tr:last-child td {
+    border: none;
+}
+
+main .top-500 a {
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+
+/* ****************************** RIGHT SECTION ***************************** */
+
+/* ******************* Top section ******************** */
+
+.right {
+    margin-top: 1.8rem;
+}
+
+.right .top {
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.right .top button {
+    display: none;
+}
+
+.right .theme-toggler {
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.right .theme-toggler span {
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right .theme-toggler span.active {
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+/* ******************* map section ******************** */
+
+.right .forest-map {
+    margin-top: 1rem;
+}
+
+.right .forest-map h2 {
+    margin-bottom: 0.8rem;
+}
+
+.right .forest-map .map {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.right .forest-map .map:hover {
+    box-shadow: none;
+}
+
+.right .forest-map .map {
+    height: 300px;
+    width: 100%;
+}
+
+/* ******************* co2 rate section ******************** */
+
+.right .co2-graph {
+    margin-top: 1rem;
+}
+
+.right .co2-graph h2 {
+    margin-bottom: 0.8rem;
+}
+
+.right .co2-graph .rate {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.right .co2-graph .rate:hover {
+    box-shadow: none;
+}
+
+.right .co2-graph .rate {
+    height: 300px;
+    width: 100%;
 }
