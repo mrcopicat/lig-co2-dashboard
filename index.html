@@ -9,13 +9,14 @@
     <!--MATERIAL ICN-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!--STYLESHEET-->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
     <!--SIDEBAR CONTAINER-->
     <div class="container">
         <aside>
+            
             <div class="top">
                 <div class="logo">
                     <img src="./img/logo.png">
@@ -23,53 +24,58 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="#" class="active">
-                    <span class="material-icons-sharp">grid_view</span>
-                    <h3>Dashboard</h3>
-                </a>
-                <a href="#" >
-                    <span class="material-icons-sharp">person</span>
-                    <h3>Users</h3>
-                    <span class="users-count">20</span>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">settings</span>
-                    <h3>Settings</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">logout</span>
-                    <h3>logout</h3>
-                </a>
+                <h2>Filters :</h2>
+                <div class="select-btn select-date-end">
+                    <label for="select-date-end">Date: </label>
+                    <input id="date" type="date" name="date">
+                </div>
+                <div class="select-btn select-period">
+                    <label for="select-period">Period: </label>
+                    <input id="time-number" type="number" name="period-num" value="1">
+                    <select id="period" name="period-window">
+                        <option value="day" selected="selected">days</option>
+                        <option value="week">weeks</option>
+                        <option value="month">months</option>
+                        <option value="year">years</option>
+                    </select>
+                </div>
+                <div class="select-btn select-agg">
+                    <label for="select-agg">Aggregate by : </label>
+                    <select id="period" name="period-window">
+                        <option value="hour">hour</option>
+                        <option value="day" selected="selected">day</option>
+                        <option value="month">month</option>
+                        <option value="year">year</option>
+                    </select>
+                </div>
+                <div class="select-btn select-machine">
+                    <label for="select-machine">Machine: </label>
+                    <select id="machines" name="machines">
+                        <option value="other">other</option>
+                    </select>
+                </div>                
+                <div class="select-btn choose-other-machine">
+                    <label for="choose-other-machine">Power (kw): </label>
+                    <input id="power-number" type="number" name="other-power" value="(default)" disabled>
+                </div>
             </div>
+
+
         </aside>
         <!--END OF ASIDE-->
         <!--MAIN SECTION-->
         <main>
             <h1>Dashboard</h1>
 
-            <div class="select-period">
-                <label for="cars">period: </label>
-                <select id="period" name="period">
-                    <option value="1d" selected="selected">1 day</option>
-                    <option value="1w">1 week</option>
-                    <option value="1m">1 month</option>
-                    <option value="1y">1 year</option>
-                    <option value="0">all</option>
-                </select>
-            </div>
-            <div class="date-end">
-                <input id="date" type="date">
-            </div>
-
             <!--INSIGHTS-->
             <div class="insights">
                 <!--JOBS RUN-->
-                <div class="jobs-run">
+                <div class="power">
                     <span class="material-icons-sharp">terminal</span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Total Jobs Run</h3>
-                            <h1>1885 </h1>
+                            <h3>Global Machine Power</h3>
+                            <h1 id="t-power">1885 <font size="-1">(kw)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -80,7 +86,7 @@
                             </div>
                         </div>
                     </div>
-                    <small class="text-muted">Last 24 hours</small>
+                    <small class="text-muted">* For the specified machine.</small>
                 </div>
                 <!--END OF JOBS RUN-->
                 <!--ENERGY CONSUMED-->
@@ -89,7 +95,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>Total Energy Consumed</h3>
-                            <h1>2000 (kW)</h1>
+                            <h1 id="tot-energy">2000 <font size="-1">(kwh)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -100,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <small class="text-muted">Last 24 hours</small>
+                    <small class="text-muted">* For the specified period.</small>
                 </div>
                 <!--END OF ENERGY CONSUMED-->
                 <!--CO2 EQUIVALENT-->
@@ -109,7 +115,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>Total CO2 Emission</h3>
-                            <h1>200 (kg)</h1>
+                            <h1>200 <font size="-1">(kg)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -120,7 +126,7 @@
                             </div>
                         </div>
                     </div>
-                    <small class="text-muted">Last 24 hours</small>
+                    <small class="text-muted">* For the specified period.</small>
                 </div>
                 <!--END OF CO2 EQUIVALENT-->
                 <!--EQ HECTARES TREES-->
@@ -129,7 +135,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>Trees Compensation</h3>
-                            <h1>1800 (Ha)</h1>
+                            <h1>1800 <font size="-1">(Ha)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -140,7 +146,7 @@
                             </div>
                         </div>
                     </div>
-                    <small class="text-muted">For the same time period.</small>
+                    <small class="text-muted">* For the specified period.</small>
                 </div>
                 <!--END OF HECTARES TREES-->
                 <!--EQ KM CAR-->
@@ -149,7 +155,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>EQ Car Distance</h3>
-                            <h1>18 (km)</h1>
+                            <h1>18 <font size="-1">(Km)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -160,7 +166,7 @@
                             </div>
                         </div>
                     </div>
-                    <small class="text-muted">For one person</small>
+                    <small class="text-muted">* For a single person ride.</small>
                 </div>
                 <!--END OF EQ KM CAR-->
                 <!--EQ NUM OF FLIGHTS-->
@@ -180,7 +186,7 @@
                             </div>
                         </div>
                     </div>
-                    <small class="text-muted">For a single passenger</small>
+                    <small class="text-muted">* For a single passenger CDG -> SHANG.</small>
                 </div>
                 <!--END OF EQ NUM FLIGHTS-->
             </div>
@@ -226,7 +232,15 @@
             <div class="forest-map">
                 <h2>Compensation By Forest Area</h2>
                 <div class="map">
-
+                    <img src="./img/grenoble_map.jpg" usemap="#image-map">
+                    <map name="image-map">
+                        <area target="_blank" alt="echirolles"  href="google.com"
+                            coords="188,525,216,461,222,438,243,449,284,446,319,439,326,449,328,453,329,460,331,472,357,515,339,523,351,530,360,541,360,547,339,544,327,538,326,546,315,548,305,554,302,559,307,576,307,584,305,589,291,574,271,560,250,544,226,530"
+                            shape="poly">
+                        <area target="_blank" alt="grenoble" href="#"
+                            coords="242,449,250,448,266,448,292,445,326,441,332,451,336,460,346,460,350,464,353,450,352,439,360,436,362,420,364,408,372,406,374,392,379,383,391,392,402,366,399,344,389,331,384,317,376,314,389,297,374,298,360,286,364,270,366,248,349,234,339,237,329,235,309,225,303,233,312,255,300,255,272,250,266,234,247,221,202,202,162,194,152,181,139,190,221,267,225,307,222,350,223,381,226,415,222,436"
+                            shape="poly">
+                    </map>
                 </div>
             </div>
             <!--END OF MAP-->
@@ -234,7 +248,7 @@
             <div class="co2-graph">
                 <h2>CO2 Rate evolution (fr)</h2>
                 <div class="rate">
-
+                    <iframe src="https://odre.opendatasoft.com/explore/embed/dataset/eco2mix-national-tr/analyze/?flg=fr&disjunctive.nature&sort=-date_heure&rows=0&dataChart=eyJxdWVyaWVzIjpbeyJjaGFydHMiOlt7InR5cGUiOiJsaW5lIiwiZnVuYyI6IkFWRyIsInlBeGlzIjoidGF1eF9jbzIiLCJjb2xvciI6IiM2NmMyYTUiLCJzY2llbnRpZmljRGlzcGxheSI6dHJ1ZX1dLCJ4QXhpcyI6ImRhdGVfaGV1cmUiLCJtYXhwb2ludHMiOjIwMCwidGltZXNjYWxlIjoibWludXRlIiwic29ydCI6IiIsImNvbmZpZyI6eyJkYXRhc2V0IjoiZWNvMm1peC1uYXRpb25hbC10ciIsIm9wdGlvbnMiOnsiZmxnIjoiZnIiLCJkaXNqdW5jdGl2ZS5uYXR1cmUiOnRydWUsInNvcnQiOiItZGF0ZV9oZXVyZSIsInJvd3MiOiIwIn19fV0sInRpbWVzY2FsZSI6IiIsImRpc3BsYXlMZWdlbmQiOnRydWUsImFsaWduTW9udGgiOnRydWV9&static=false&datasetcard=false"></iframe>
                 </div>
             </div>
             <!--END OF CO2-GRAPH-->
