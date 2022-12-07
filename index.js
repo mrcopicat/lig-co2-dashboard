@@ -1,3 +1,6 @@
+// // Imports
+import * as display from './script/display.js';
+
 // // Variables
 var showIdx = 0;
 
@@ -8,29 +11,14 @@ const showAllTable = document.querySelector("main .top-500 a");
 const periodNumFilter = document.querySelector("aside .sidebar input[name='period-num']");
 const periodWindowFilter = document.querySelector("aside .sidebar select[name='period-window'");
 const dateFilter = document.querySelector("aside .sidebar input[name='date']");
+const aggFilter = document.querySelector("aside .sidebar select[name='agg-window']");
 const machineFilter = document.querySelector("aside .sidebar select[name='machines']");
 const powerFilter = document.querySelector("aside .sidebar input[name='other-power']");
+const cityFilter = document.querySelector("aside .sidebar select[name='cities']");
 
-// // Functions
-// Display (& update) the top 500 data 
-function showDataTable(begin, end) {
-    top500Data.slice(begin, end).forEach(row => {
-        const tr = document.createElement('tr');
-        const trContent = `
-            <td>${row.Rank}</td>
-            <td>${row.Name}</td>
-            <td>${row.TotalCores}</td>
-            <td>${row.Rmax}</td>
-            <td>${row.Rpeak}</td>
-            <td>${row.Powerkw}</td>
-            <td class="danger">${row.EnergyEfficiency}</td>
-            `;
-            tr.innerHTML = trContent;
-            document.querySelector('table tbody').appendChild(tr);
-    })
-}
-
-top500Data.slice(0, 20).forEach(row => {
+// // First appearance
+// Display (& update) the top 500 slider
+top500Data.slice(0, 50).forEach(row => {
     const option = document.createElement('option');
     //var optionContent;
     if (row.Rank == 1) {
@@ -47,10 +35,29 @@ top500Data.slice(0, 20).forEach(row => {
         machineFilter.appendChild(option);
     }
 })
-// Calculation metrics
-//function emissionCO2(tauxCO2, )
 
-// // Actions 
+// Display (& update) the cities slider
+citiesData.forEach(row => {
+    const option = document.createElement('option');
+    //var optionContent;
+    if (row.Rank == 1) {
+        console.log(row.city)
+        const optionContent = `
+            <option value="${row.city} selected="selected">${row.city}</option>
+            `;
+        option.innerHTML = optionContent;
+        cityFilter.appendChild(option);
+    } else {
+        const optionContent = `
+            <option value="${row.city}">${row.city}</option>
+            `;
+        option.innerHTML = optionContent;
+        cityFilter.appendChild(option);
+    }
+})
+
+
+// // Actions & Events
 // change theme
 themeToggler.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme-variables');
@@ -60,51 +67,46 @@ themeToggler.addEventListener('click', () => {
 })
 
 // shows the next {defaultShow} rows
-showDataTable(0, defaultShow);
+display.showDataTable(0, defaultShow, top500Data);
 showAllTable.addEventListener('click', () => {
     showIdx++;
-    showDataTable(defaultShow * showIdx, defaultShow * (showIdx + 1));
+    display.showDataTable(defaultShow * showIdx, defaultShow * (showIdx + 1), top500Data);
     console.log(defaultShow);
     
 })
 
-periodWindowFilter.addEventListener('change', () => {
-    document.getElementById('t-power').innerHTML = 0;
-})
-
+// enable/disable power window based on the user's  machine choice
 machineFilter.addEventListener('change', () => {
     if (machineFilter.value == 'other') {
         document.getElementById("power-number").disabled = false;
-        document.getElementById("power-number").value = 1000;
     } else {
-        const powerTemp = Number(
-            top500Data.find(element => element.Name == machineFilter.value).Powerkw.replace(',', ''))
+        const powerTemp = Math.round(Number(
+            top500Data.find(element => element.Name == machineFilter.value).Powerkw.replace(',', '')));
         document.getElementById("power-number").disabled = true;
         document.getElementById("power-number").value = powerTemp;
     }
 })
 
+// Change the displayed values based on filter
 document.body.addEventListener('change', event => {
+    // if none of the values are changed, do NOTHING!
     if (event.target !== periodNumFilter &&
         event.target !== periodWindowFilter &&
         event.target !== dateFilter &&
-        event.target !== machineFilter) {
+        event.target !== aggFilter &&
+        event.target !== machineFilter &&
+        event.target !== powerFilter &&
+        event.target !== cityFilter) {
         return
     }
-    // Fetch the update values
+    // Update the main window
     var updatedValues = {
-        periodH: periodToHours(periodNumFilter.value, periodWindowFilter.value),
         date: dateFilter.value,
-        power: powerFilter.value
+        range: periodNumFilter.value,
+        period: periodWindowFilter.value,
+        agg: aggFilter.value,
+        power: powerFilter.value,
+        city: cityFilter.value
     }
-
-    // Update the windows
-    // updateMachinePower(updatedValues);
-    // updateTotalEnergy(updatedValues);
-    // updateCo2Emission(updatedValues);
-
-    // updateTreeComp(updatedValues);
-    // updateEqCarDistance(updatedValues);
-    // updateEqNumFlights(updatedValues);
-
+    display.updateMain(updatedValues);
 })

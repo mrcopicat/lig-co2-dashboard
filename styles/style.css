@@ -180,7 +180,7 @@ aside h3 {
 aside .sidebar .select-btn {
     display: inline-block;
     box-shadow: var(--box-shadow);
-    gap: 1rem;
+    gap: 2rem;
     align-items: stretch;
     position: relative;
     height: auto;
@@ -210,7 +210,7 @@ aside .sidebar input {
 }
 
 aside .sidebar input[type="number"] {
-    width: 40%;
+    width: 41%;
 }
 aside .sidebar select {
     background: transparent;

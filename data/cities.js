@@ -1,0 +1,93 @@
+citiesData = [
+    {
+        city: "Tokyo",
+        city_ascii: "Tokyo",
+        lat: "35.6839",
+        lng: "139.7744",
+        country: "Japan",
+        iso2: "JP",
+        iso3: "JPN",
+        admin_name: "Tōkyō",
+        capital: "primary",
+        population: "39105000",
+        id: "1392685764"
+    },
+    {
+        city: "London",
+        city_ascii: "London",
+        lat: "51.5072",
+        lng: "-0.1275",
+        country: "United Kingdom",
+        iso2: "GB",
+        iso3: "GBR",
+        admin_name: "London, City of",
+        capital: "primary",
+        population: "11120000",
+        id: "1826645935"
+      },
+      {
+        city: "Paris",
+        city_ascii: "Paris",
+        lat: "48.8566",
+        lng: "2.3522",
+        country: "France",
+        iso2: "FR",
+        iso3: "FRA",
+        admin_name: "Île-de-France",
+        capital: "primary",
+        population: "11027000",
+        id: "1250015082"
+      },
+      {
+        city: "Shanghai",
+        city_ascii: "Shanghai",
+        lat: "31.1667",
+        lng: "121.4667",
+        country: "China",
+        iso2: "CN",
+        iso3: "CHN",
+        admin_name: "Shanghai",
+        capital: "admin",
+        population: "22118000",
+        id: "1156073548"
+      },
+      {
+        city: "New York",
+        city_ascii: "New York",
+        lat: "40.6943",
+        lng: "-73.9249",
+        country: "United States",
+        iso2: "US",
+        iso3: "USA",
+        admin_name: "New York",
+        capital: "",
+        population: "18713220",
+        id: "1840034016"
+      },
+      {
+        city: "Grenoble",
+        city_ascii: "Grenoble",
+        lat: "45.1715",
+        lng: "5.7224",
+        country: "France",
+        iso2: "FR",
+        iso3: "FRA",
+        admin_name: "Auvergne-Rhône-Alpes",
+        capital: "minor",
+        population: "157650",
+        id: "1250071647"
+      },
+      {
+        city: "Mexico City",
+        city_ascii: "Mexico City",
+        lat: "19.4333",
+        lng: "-99.1333",
+        country: "Mexico",
+        iso2: "MX",
+        iso3: "MEX",
+        admin_name: "Ciudad de México",
+        capital: "primary",
+        population: "21505000",
+        id: "1484247881"
+      }
+]

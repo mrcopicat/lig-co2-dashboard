@@ -16,7 +16,6 @@
     <!--SIDEBAR CONTAINER-->
     <div class="container">
         <aside>
-            
             <div class="top">
                 <div class="logo">
                     <img src="./img/logo.png">
@@ -25,41 +24,49 @@
             </div>
             <div class="sidebar">
                 <h2>Filters :</h2>
-                <div class="select-btn select-date-end">
-                    <label for="select-date-end">Date: </label>
-                    <input id="date" type="date" name="date">
-                </div>
-                <div class="select-btn select-period">
-                    <label for="select-period">Period: </label>
-                    <input id="time-number" type="number" name="period-num" value="1">
-                    <select id="period" name="period-window">
-                        <option value="day" selected="selected">days</option>
-                        <option value="week">weeks</option>
-                        <option value="month">months</option>
-                        <option value="year">years</option>
-                    </select>
+                <div class="select-btn">
+                    <div class="select-date-end">
+                        <label for="select-date-end">Date: </label>
+                        <input id="date" type="date" name="date" value="2021-01-01">
+                    </div>
+                    <div class="select-period">
+                        <label for="select-period">Period: </label>
+                        <input id="time-number" type="number" name="period-num" value="1">
+                        <select id="period" name="period-window">
+                            <option value="day" selected="selected">days</option>
+                            <option value="week">weeks</option>
+                            <option value="month">months</option>
+                            <option value="year">years</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="select-btn select-agg">
                     <label for="select-agg">Aggregate by : </label>
-                    <select id="period" name="period-window">
+                    <select id="agg" name="agg-window">
                         <option value="hour">hour</option>
                         <option value="day" selected="selected">day</option>
                         <option value="month">month</option>
                         <option value="year">year</option>
                     </select>
                 </div>
-                <div class="select-btn select-machine">
-                    <label for="select-machine">Machine: </label>
-                    <select id="machines" name="machines">
-                        <option value="other">other</option>
-                    </select>
+                <div class="select-btn">
+                    <div class="select-machine">
+                        <label for="select-machine">Machine: </label>
+                        <select id="machines" name="machines">
+                            <option value="other">other</option>
+                        </select>
+                    </div>
+                    <div class="choose-other-machine">
+                        <label for="choose-other-machine">Power (kw): </label>
+                        <input id="power-number" type="number" name="other-power" disabled>
+                    </div>
                 </div>                
-                <div class="select-btn choose-other-machine">
-                    <label for="choose-other-machine">Power (kw): </label>
-                    <input id="power-number" type="number" name="other-power" value="(default)" disabled>
+                <div class="select-btn choose-city">
+                    <label for="choose-city">City (map): </label>
+                    <select id="city-map" name="cities">
+                    </select>
                 </div>
             </div>
-
 
         </aside>
         <!--END OF ASIDE-->
@@ -75,7 +82,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>Global Machine Power</h3>
-                            <h1 id="t-power">1885 <font size="-1">(kw)</font></h1>
+                            <h1 id="tot-power">- <font size="-1">(kw)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -95,7 +102,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>Total Energy Consumed</h3>
-                            <h1 id="tot-energy">2000 <font size="-1">(kwh)</font></h1>
+                            <h1 id="tot-energy">- <font size="-1">(Mwh)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -115,7 +122,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>Total CO2 Emission</h3>
-                            <h1>200 <font size="-1">(kg)</font></h1>
+                            <h1 id="tot-co2">- <font size="-1">(kg)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -135,7 +142,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>Trees Compensation</h3>
-                            <h1>1800 <font size="-1">(Ha)</font></h1>
+                            <h1 id="tree-comp">- <font size="-1">(Ha)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -155,7 +162,7 @@
                     <div class="middle">
                         <div class="left">
                             <h3>EQ Car Distance</h3>
-                            <h1>18 <font size="-1">(Km)</font></h1>
+                            <h1 id="car-dist">- <font size="-1">(Km)</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -175,14 +182,14 @@
                     <div class="middle">
                         <div class="left">
                             <h3>EQ N° Flights</h3>
-                            <h1>20</h1>
+                            <h1 id="num-flights">- <font size="-1"> °</font></h1>
                         </div>
                         <div class="progress">
                             <svg>
                                 <circle cx="38" cy="38" r="36"></circle>
                             </svg>
                             <div class="number">
-                                <p>81%</p>
+                                <p>100%</p>
                             </div>
                         </div>
                     </div>
@@ -231,17 +238,7 @@
             <!--BEGIN OF MAP-->
             <div class="forest-map">
                 <h2>Compensation By Forest Area</h2>
-                <div class="map">
-                    <img src="./img/grenoble_map.jpg" usemap="#image-map">
-                    <map name="image-map">
-                        <area target="_blank" alt="echirolles"  href="google.com"
-                            coords="188,525,216,461,222,438,243,449,284,446,319,439,326,449,328,453,329,460,331,472,357,515,339,523,351,530,360,541,360,547,339,544,327,538,326,546,315,548,305,554,302,559,307,576,307,584,305,589,291,574,271,560,250,544,226,530"
-                            shape="poly">
-                        <area target="_blank" alt="grenoble" href="#"
-                            coords="242,449,250,448,266,448,292,445,326,441,332,451,336,460,346,460,350,464,353,450,352,439,360,436,362,420,364,408,372,406,374,392,379,383,391,392,402,366,399,344,389,331,384,317,376,314,389,297,374,298,360,286,364,270,366,248,349,234,339,237,329,235,309,225,303,233,312,255,300,255,272,250,266,234,247,221,202,202,162,194,152,181,139,190,221,267,225,307,222,350,223,381,226,415,222,436"
-                            shape="poly">
-                    </map>
-                </div>
+                <div id="map" class="map"></div>
             </div>
             <!--END OF MAP-->
             <!--BEGIN OF CO2-GRAPH-->
@@ -256,8 +253,12 @@
         </div>
         <!--END OF RIGHT WINDOW-->
     </div>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+    defer></script>
     <script src="./data/top500.js"></script>
-    <script src="./index.js"></script>
+    <script src="./data/cities.js"></script>
+    <script type="module" src="./index.js"></script>
 </body>
 
 </html>
