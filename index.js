@@ -60,7 +60,6 @@ citiesData.forEach(row => {
     }
 })
 
-
 // // Actions & Events
 // change theme
 document.body.classList.toggle('dark-theme-variables');
