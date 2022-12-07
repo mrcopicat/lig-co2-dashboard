@@ -212,11 +212,16 @@ aside .sidebar input {
 aside .sidebar input[type="number"] {
     width: 41%;
 }
+
 aside .sidebar select {
     background: transparent;
     align-items: center;
     color: var(--color-dark);
     border-radius: var(--border-radius-1);
+}
+
+aside .sidebar select option {
+    color: #202528;
 }
 
 /* ******************************* MAIN SECTION ***************************** */

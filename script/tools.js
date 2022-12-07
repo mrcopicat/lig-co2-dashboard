@@ -8,6 +8,43 @@ export function expo(x) {
     return val
 }
 
+export function calcPercentPop(population, ratio, value, timeH, metric) {
+    // data
+    const avgEnerPersonY = 6.679; // 2018 stat (MWh/y)
+    const avgKmPersonY = 13117; // 2022 stat (km/y)
+    const avgEmPersonY = 4.5; // 2019 stat (t/y)
+    const avgFlightPersonY = 4.2; // 2021 stat (flight/y)
+    const hectaresLostFr = 31600; // 2021 stat (Ha)
+
+    // time (to years):
+    var timeY = timeH / (365 *24);
+
+    // result
+    var result;
+    switch (metric) {
+        case 'power':
+            result = Math.round(100 * value / (population * ratio * avgEnerPersonY * 1e03 / (365 * 24)));
+            break;
+        case 'energy':
+            result = Math.round(100 * value  * timeY / (population * ratio * avgEnerPersonY));
+            break;
+        case 'emission':
+            result = Math.round(100 * value  * timeY / (population * ratio * avgEmPersonY));
+            break;
+        case 'tree':
+            result = Math.round(100 * value  * timeY / (hectaresLostFr));
+            break;
+        case 'km':
+            result = Math.round(100 * value  * timeY / (population * ratio * avgKmPersonY));
+            break;
+        case 'flight':
+            result = Math.round(100 * value  * timeY / (population * ratio * avgFlightPersonY));
+            break;
+        default:
+            throw 'undefined (or yet not added) metric value.'
+    }
+    return result;
+}
 export function periodToHours(num, period) {
     var numHours;
     switch (period) {
@@ -18,10 +55,10 @@ export function periodToHours(num, period) {
             numHours = 24 * 7;
             break;
         case 'month':
-            numHours = 24 * 7 * 30;
+            numHours = 24 * 30;
             break;
         case 'year':
-            numHours = 24 * 7 * 365;
+            numHours = 24 * 365;
             break;
         default:
             numHours = 1;

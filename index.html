@@ -35,7 +35,7 @@
                         <select id="period" name="period-window">
                             <option value="day" selected="selected">days</option>
                             <option value="week">weeks</option>
-                            <option value="month">months</option>
+                            <option value="month" selected="selected">months</option>
                             <option value="year">years</option>
                         </select>
                     </div>
@@ -43,8 +43,8 @@
                 <div class="select-btn select-agg">
                     <label for="select-agg">Aggregate by : </label>
                     <select id="agg" name="agg-window">
-                        <option value="hour">hour</option>
-                        <option value="day" selected="selected">day</option>
+                        <option value="hour" selected="selected">hour</option>
+                        <option value="day">day</option>
                         <option value="month">month</option>
                         <option value="year">year</option>
                     </select>
@@ -58,13 +58,19 @@
                     </div>
                     <div class="choose-other-machine">
                         <label for="choose-other-machine">Power (kw): </label>
-                        <input id="power-number" type="number" name="other-power" disabled>
+                        <input id="power-number" type="number" name="other-power" >
                     </div>
                 </div>                
-                <div class="select-btn choose-city">
-                    <label for="choose-city">City (map): </label>
-                    <select id="city-map" name="cities">
-                    </select>
+                <div class="select-btn">
+                    <div class="choose-city">
+                        <label for="choose-city">City (map): </label>
+                        <select id="city-map" name="cities">
+                        </select>
+                    </div>
+                    <div class="choose-ratio">
+                        <label for="choose-ratio">Ratio (pop): </label>
+                        <input id="pop-ratio" type="number" name="pop-ratio" value="0.001" min="0" max="1">
+                    </div>
                 </div>
             </div>
 
@@ -86,10 +92,10 @@
                         </div>
                         <div class="progress">
                             <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
+                                <circle id="circle-pow" cx="38" cy="38" r="36"></circle>
                             </svg>
                             <div class="number">
-                                <p>81%</p>
+                                <p id="percent-pow">--%</p>
                             </div>
                         </div>
                     </div>
@@ -106,10 +112,10 @@
                         </div>
                         <div class="progress">
                             <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
+                                <circle id="circle-ener" cx="38" cy="38" r="36"></circle>
                             </svg>
-                            <div class="number">
-                                <p>81%</p>
+                            <div id="percent-ener" class="number">
+                                <p>--%</p>
                             </div>
                         </div>
                     </div>
@@ -126,10 +132,10 @@
                         </div>
                         <div class="progress">
                             <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
+                                <circle id="circle-em" cx="38" cy="38" r="36"></circle>
                             </svg>
                             <div class="number">
-                                <p>81%</p>
+                                <p id="percent-em">--%</p>
                             </div>
                         </div>
                     </div>
@@ -146,10 +152,10 @@
                         </div>
                         <div class="progress">
                             <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
+                                <circle id="circle-hect" cx="38" cy="38" r="36"></circle>
                             </svg>
                             <div class="number">
-                                <p>81%</p>
+                                <p id="percent-hect">--%</p>
                             </div>
                         </div>
                     </div>
@@ -166,10 +172,10 @@
                         </div>
                         <div class="progress">
                             <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
+                                <circle id="circle-car" cx="38" cy="38" r="36"></circle>
                             </svg>
                             <div class="number">
-                                <p>81%</p>
+                                <p id="percent-car">--%</p>
                             </div>
                         </div>
                     </div>
@@ -186,10 +192,10 @@
                         </div>
                         <div class="progress">
                             <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
+                                <circle id="circle-flight" cx="38" cy="38" r="36"></circle>
                             </svg>
                             <div class="number">
-                                <p>100%</p>
+                                <p id="percent-flight">--%</p>
                             </div>
                         </div>
                     </div>

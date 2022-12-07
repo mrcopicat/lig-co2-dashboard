@@ -10,11 +10,15 @@ const showAllTable = document.querySelector("main .top-500 a");
 
 const periodNumFilter = document.querySelector("aside .sidebar input[name='period-num']");
 const periodWindowFilter = document.querySelector("aside .sidebar select[name='period-window'");
+
 const dateFilter = document.querySelector("aside .sidebar input[name='date']");
 const aggFilter = document.querySelector("aside .sidebar select[name='agg-window']");
+
 const machineFilter = document.querySelector("aside .sidebar select[name='machines']");
 const powerFilter = document.querySelector("aside .sidebar input[name='other-power']");
+
 const cityFilter = document.querySelector("aside .sidebar select[name='cities']");
+const ratioFilter = document.querySelector("aside .sidebar input[name='pop-ratio']");
 
 // // First appearance
 // Display (& update) the top 500 slider
@@ -59,11 +63,13 @@ citiesData.forEach(row => {
 
 // // Actions & Events
 // change theme
+document.body.classList.toggle('dark-theme-variables');
+themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
 themeToggler.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme-variables');
     themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
     themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
-
 })
 
 // shows the next {defaultShow} rows
@@ -96,7 +102,8 @@ document.body.addEventListener('change', event => {
         event.target !== aggFilter &&
         event.target !== machineFilter &&
         event.target !== powerFilter &&
-        event.target !== cityFilter) {
+        event.target !== cityFilter &&
+        event.target !== ratioFilter) {
         return
     }
     // Update the main window
@@ -106,7 +113,8 @@ document.body.addEventListener('change', event => {
         period: periodWindowFilter.value,
         agg: aggFilter.value,
         power: powerFilter.value,
-        city: cityFilter.value
+        city: cityFilter.value,
+        ratio: ratioFilter.value
     }
-    display.updateMain(updatedValues);
+    display.updateMain(updatedValues, citiesData);
 })
